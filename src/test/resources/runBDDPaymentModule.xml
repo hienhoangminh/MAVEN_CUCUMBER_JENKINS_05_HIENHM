@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BANK GURU" parallel="tests" thread-count="3">
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="commons.ExtentReportListener" />
+	</listeners>
+	<parameter name="url" value="http://demo.guru99.com/v4/" />
+	<parameter name="userId" value="mngr163440" />
+	<parameter name="userPass" value="vUduhyh" />
+
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chrome" />
+		<parameter name="toAccountId" value="51746" />
+		<classes>
+			<class name="com.bankguru.payment.User_01_Payment_Module_v2" />
+		</classes>
+	</test>
+	<test name="Run on Firefox">
+		<parameter name="browser" value="firefox" />
+		<parameter name="toAccountId" value="51747" />
+		<classes>
+			<class name="com.bankguru.payment.User_01_Payment_Module_v2" />
+		</classes>
+	</test>
+	<test name="Run on Chrome Headless">
+		<parameter name="browser" value="chromeheadless" />
+		<parameter name="toAccountId" value="51748" />
+		<classes>
+			<class name="com.bankguru.payment.User_01_Payment_Module_v2" />
+		</classes>
+	</test>
+	<test name="Run on Firefox Headless">
+		<parameter name="browser" value="firefoxheadless" />
+		<parameter name="toAccountId" value="51749" />
+		<classes>
+			<class name="com.bankguru.payment.User_01_Payment_Module_v2" />
+		</classes>
+	</test>
+</suite>
