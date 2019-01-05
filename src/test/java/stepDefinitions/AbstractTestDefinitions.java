@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractTest;
