@@ -16,13 +16,14 @@ public class Hooks {
 
 	private static WebDriver driver;
 	private static final Logger log = Logger.getLogger(Hooks.class.getName());
-	
+
 	@Before
 	public synchronized static WebDriver openBrowser() {
 		// Run by Maven command line
 		String browser = System.getProperty("BROWSER");
+		String os = System.getProperty("os.name");
 		ChromeOptions options;
-		
+
 		if (driver == null) {
 			try {
 				// Kiem tra BROWSER = null -> gan = chrome
@@ -35,13 +36,21 @@ public class Hooks {
 
 				switch (browser) {
 				case "chrome":
-					System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					if (os.contains("mac")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					} else if (os.contains("win")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+					}
 					options = new ChromeOptions();
 					options.addArguments("--start-maximized");
 					driver = new ChromeDriver(options);
 					break;
 				case "hchrome":
-					System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					if (os.contains("mac")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					} else if (os.contains("win")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+					}
 					options = new ChromeOptions();
 					options.addArguments("headless");
 					options.addArguments("window-size=1366x768");
@@ -57,7 +66,11 @@ public class Hooks {
 					driver = new InternetExplorerDriver();
 					break;
 				default:
-					System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					if (os.contains("mac")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
+					} else if (os.contains("win")) {
+						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+					}
 					driver = new ChromeDriver();
 					break;
 				}
@@ -92,5 +105,5 @@ public class Hooks {
 			close();
 		}
 	}
-	
+
 }
