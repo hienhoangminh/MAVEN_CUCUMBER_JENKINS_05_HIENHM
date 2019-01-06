@@ -39,7 +39,7 @@ public class Hooks {
 					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
 					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
 					}
 					options = new ChromeOptions();
 					options.addArguments("--start-maximized");
@@ -49,7 +49,7 @@ public class Hooks {
 					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
 					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
 					}
 					options = new ChromeOptions();
 					options.addArguments("headless");
@@ -69,7 +69,7 @@ public class Hooks {
 					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
 					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
+						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
 					}
 					driver = new ChromeDriver();
 					break;
