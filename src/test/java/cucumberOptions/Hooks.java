@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import cucumber.api.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Hooks {
 
@@ -36,24 +37,19 @@ public class Hooks {
 
 				switch (browser) {
 				case "chrome":
-					if (os.indexOf("mac") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-					}
 					options = new ChromeOptions();
-					options.addArguments("--start-maximized");
+					options.addArguments("--incognito");
+					options.addArguments("--disable-extensions");
+					options.addArguments("disabble-infobars");
+					options.addArguments("start-maximized");
+					WebDriverManager.chromedriver().setup();
 					driver = new ChromeDriver(options);
 					break;
 				case "hchrome":
-					if (os.indexOf("mac") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-					}
+					WebDriverManager.chromedriver().setup();
 					options = new ChromeOptions();
 					options.addArguments("headless");
-					options.addArguments("window-size=1366x768");
+					options.addArguments("window-size=1920x1080");
 					driver = new ChromeDriver(options);
 					break;
 				case "firefox":
@@ -62,16 +58,17 @@ public class Hooks {
 				case "hfirefox":
 					break;
 				case "ie":
-					System.setProperty("webdriver.ie.driver", "src\\test\\resources\\IEDriverServer.exe");
+					System.setProperty("webdriver.ie.driver", ".\\src\\test\\resources\\IEDriverServer.exe");
 					driver = new InternetExplorerDriver();
 					break;
 				default:
-					if (os.indexOf("mac") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.indexOf("win") >= 0) {
-						System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-					}
-					driver = new ChromeDriver();
+					options = new ChromeOptions();
+					options.addArguments("--incognito");
+					options.addArguments("--disable-extensions");
+					options.addArguments("disabble-infobars");
+					options.addArguments("start-maximized");
+					WebDriverManager.chromedriver().setup();
+					driver = new ChromeDriver(options);
 					break;
 				}
 			} catch (UnreachableBrowserException e) {
