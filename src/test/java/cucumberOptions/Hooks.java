@@ -36,9 +36,9 @@ public class Hooks {
 
 				switch (browser) {
 				case "chrome":
-					if (os.contains("mac")) {
+					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.contains("win")) {
+					} else if (os.indexOf("win") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
 					}
 					options = new ChromeOptions();
@@ -46,9 +46,9 @@ public class Hooks {
 					driver = new ChromeDriver(options);
 					break;
 				case "hchrome":
-					if (os.contains("mac")) {
+					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.contains("win")) {
+					} else if (os.indexOf("win") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
 					}
 					options = new ChromeOptions();
@@ -66,9 +66,9 @@ public class Hooks {
 					driver = new InternetExplorerDriver();
 					break;
 				default:
-					if (os.contains("mac")) {
+					if (os.indexOf("mac") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver");
-					} else if (os.contains("win")) {
+					} else if (os.indexOf("win") >= 0) {
 						System.setProperty("webdriver.chrome.driver", "src//test//resources//chromedriver.exe");
 					}
 					driver = new ChromeDriver();
