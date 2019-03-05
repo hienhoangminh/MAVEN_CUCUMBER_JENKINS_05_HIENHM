@@ -390,7 +390,6 @@ public class AbstractPage {
 
 	public boolean verifyElementUndisplayed(WebDriver driver, String... attrValues) {
 		String locator = String.format(AbstractPageUI.DYNAMIC_MESSAGE_TEXT, (Object[]) attrValues);
-		waitForControlVisible(driver, locator);
 		return isControlUndisplayed(driver, locator);
 	}
 
